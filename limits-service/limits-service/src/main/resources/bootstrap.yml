@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: limits-service
+  cloud:
+    server:
+      uri: http://localhost:8888
+  profiles:
+    active: dev
+
+server:
+  #port: 8080,8081
+  port: ${random.int[8080,8082]}
+

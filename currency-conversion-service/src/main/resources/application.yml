@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: currency-conversion-service
+
+server:
+  #port: ${random.int[8100,8110]}
+  port: 8100
+
+#currency-exchange-service:
+  #ribbon:
+    #listOfServers: http://localhost:8009,http://localhost:8004,http://localhost:8005
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+
+
+
+feign.client.config.default.connectTimeout: 160000000
+feign.client.config.default.readTimeout: 160000000
+ribbon:
+  ConnectTimeout: 120000
+  ReadTimeout: 120000
